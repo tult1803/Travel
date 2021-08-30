@@ -26,7 +26,7 @@ Widget miniContainer({BuildContext? context, String? image}) {
       shape:
           RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
       onPressed: () {
-        getLocation();
+
       },
       child: Text(""),
     ),

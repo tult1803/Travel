@@ -1,9 +1,9 @@
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:location/location.dart';
 import 'package:travel_app/helpers/component.dart';
 import 'package:travel_app/ultils/data_color.dart';
 import 'package:travel_app/ultils/location.dart';
@@ -19,9 +19,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? address = "-----";
+  String? address = "-----", windSpeed = "-----";
   String? temp, adminArea = "-----";
-  String? weatherMain;
+  String? weatherMain, humidity = "-----";
   ModelWeather _modelWeather = ModelWeather();
   ModelWeather? _data;
   DataWeather weather = DataWeather();
@@ -49,9 +49,14 @@ class _HomePageState extends State<HomePage> {
 
    Future _getDataLocation() async{
       dataLocation = await getLocation();
-      setState(() {
-        address = "${dataLocation.addressLine}";
-        adminArea = "${dataLocation.adminArea}";
+    setState(() {
+        if(dataLocation != null){
+          address = "${dataLocation.addressLine}";
+          adminArea = "${dataLocation.adminArea}";
+        }else{
+          adminArea = "Thành phố Hồ Chí Minh";
+          address = "Không thể lấy vị trí cụ thể";
+      }
       });
     submitCity(adminArea);
   }
@@ -72,6 +77,8 @@ class _HomePageState extends State<HomePage> {
               _data = _modelWeather;
               weatherMain = "${_data!.weather!.first.description!.substring(0,1).toUpperCase()}${_data!.weather!.first.description!.substring(1)}";
               temp = "${_data!.main!.temp}";
+              humidity = "${_data!.main!.humidity}";
+              windSpeed = "${_data!.wind!.speed}";
               // _translate();
             });
   }
@@ -94,6 +101,7 @@ class _HomePageState extends State<HomePage> {
                SizedBox(height: 10,),
                Text(address!, style: GoogleFonts.roboto(color: Colors.white70, fontSize: 18),),
                showTemp("$temp", "$weatherMain",color: Colors.white),
+               Text("Độ ẩm: $humidity     Sức gió: $windSpeed m/s", style: GoogleFonts.roboto(color: Colors.white70, fontSize: 18),),
              ],
           ),
         ),
