@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "735893038886",
+    "firebase_url": "https://travel-27838-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "travel-27838",
+    "storage_bucket": "travel-27838.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735893038886:android:c1b045a9ceab1d6432c3e7",
+        "android_client_info": {
+          "package_name": "com.example.travel_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735893038886-nljutbkv4lklbtuc6foeh7vn8d8u38me.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.travel_app",
+            "certificate_hash": "332902a493783ae433ce607d0a2c486b09d5e67f"
+          }
+        },
+        {
+          "client_id": "735893038886-5vot8m8iuqd0jfq2m8dnd4ih4f07or2f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDG8TuB644M2LJL8d2BbsKv4U4gVo8CCl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735893038886-5vot8m8iuqd0jfq2m8dnd4ih4f07or2f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

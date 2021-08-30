@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:travel_app/ultils/data_color.dart';
-import 'package:travel_app/view_home.dart';
+import 'package:travel_app/view/home_page.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

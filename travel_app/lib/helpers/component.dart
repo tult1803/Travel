@@ -1,9 +1,10 @@
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:travel_app/ultils/location.dart';
+import 'package:travel_app/view/all_food_sea.dart';
 
-Widget miniContainer({BuildContext? context, String? image}) {
+Widget miniContainer({BuildContext? context, String? image, required String seaName}) {
   return Container(
     height: 150,
     width: 150,
@@ -26,7 +27,7 @@ Widget miniContainer({BuildContext? context, String? image}) {
       shape:
           RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
       onPressed: () {
-
+        Navigator.of(context!).push(MaterialPageRoute(builder: (context) => FoodSea(seaName: seaName),));
       },
       child: Text(""),
     ),
