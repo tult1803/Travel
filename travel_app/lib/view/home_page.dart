@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
   Widget bodyBottom(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      margin: EdgeInsets.only(top: size.height * 0.3),
+      margin: EdgeInsets.only(top: size.height * 0.32),
       width: size.width,
       decoration: BoxDecoration(
         color: Colors.white,
