@@ -43,13 +43,27 @@ void launchURL(String? url) async => await canLaunch("$url")
     : throw EasyLoading.showError("Có lỗi xảy ra. Thử lại",
         duration: Duration(seconds: 2));
 
- openGoogleMap(String? location)async{
+openGoogleMap(String? location) async {
   List<Location> locations = await locationFromAddress("$location");
-  final availableMaps = await MapLauncher.installedMaps;
-  print(availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
 
-  await availableMaps.first.showMarker(
-    coords: Coords(locations.first.latitude, locations.first.longitude),
-    title: "$location",
-  );
+  /// Check có google map ko
+  bool? isGoogleMap = await MapLauncher.isMapAvailable(MapType.google);
+
+  /// Có thì mở google map
+  if (isGoogleMap!) {
+    print('Google Map');
+    await MapLauncher.showMarker(
+      mapType: MapType.google,
+      coords: Coords(locations.first.latitude, locations.first.longitude),
+      title: "$location",
+    );
+  } else {
+    /// Không có Google Map thì mở trình duyệt map có sẵn
+    final availableMaps = await MapLauncher.installedMaps;
+    print("Map đang mở: ${availableMaps.first.mapName}"); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
+    await availableMaps.first.showMarker(
+      coords: Coords(locations.first.latitude, locations.first.longitude),
+      title: "$location",
+    );
+  }
 }
