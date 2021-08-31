@@ -2,7 +2,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoder/geocoder.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:travel_app/ultils/convert_data.dart';
 import 'package:travel_app/view/all_food_sea.dart';
 
@@ -48,6 +51,8 @@ Widget foodContainer(BuildContext context,
     required String star,
     required String location}) {
   var size = MediaQuery.of(context).size;
+  // String url = "https://www.google.com/maps/search/";
+  String url = "https://www.google.com/maps/search/?api=1&query=";
   return Container(
     height: 150,
     width: size.width,
@@ -88,13 +93,16 @@ Widget foodContainer(BuildContext context,
               ),
               componentRowFood(icon: Icons.star_border, content: "$star"),
               Expanded(
-                  child: Container(
+                  child: GestureDetector(
+                    onTap: () => openGoogleMap(location),
+                    child: Container(
                 margin: EdgeInsets.only(right: 10),
                 alignment: Alignment.centerRight,
                 width: size.width,
                 child: Text("Chỉ đường",
-                    style: GoogleFonts.roboto(color: Colors.blueAccent)),
-              )),
+                      style: GoogleFonts.roboto(color: Colors.blueAccent)),
+              ),
+                  )),
             ],
           ),
         )),
