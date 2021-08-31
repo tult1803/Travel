@@ -29,6 +29,8 @@ dependencies:
   location: ^4.3.0
   geocoder: ^0.2.1
   intl: ^0.17.0
+#  firebase_database: ^7.2.1
+#  firebase_core: ^1.6.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -52,6 +54,9 @@ flutter:
   assets:
      - images/vung_tau.png
      - images/can_gio.png
+     - images/banh_mi_hoang_dieu.png
+     - images/lau_ca_duoi_7_luom.png
+     - images/oc_tu_nhien.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

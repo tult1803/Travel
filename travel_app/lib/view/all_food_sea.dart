@@ -1,4 +1,3 @@
-// ignore: import_of_legacy_library_into_null_safe
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:travel_app/helpers/component.dart';
 import 'package:travel_app/ultils/convert_data.dart';
 import 'package:travel_app/ultils/data_color.dart';
-import 'package:travel_app/ultils/location.dart';
 import 'package:travel_app/view/home_page.dart';
 
 import '../model/getWeather.dart';
@@ -24,7 +22,7 @@ class FoodSea extends StatefulWidget {
 }
 
 class _FoodSeaState extends State<FoodSea> {
-  String? windSpeed = "-----",  dateNow = "-----";
+  String? windSpeed = "-----", dateNow = "-----";
   String? temp, sunRise = "-----";
   String? weatherMain, humidity = "-----", sunSet = "-----";
   ModelWeather _modelWeather = ModelWeather();
@@ -47,7 +45,7 @@ class _FoodSeaState extends State<FoodSea> {
         fit: StackFit.expand,
         children: [
           bodyTop(context),
-          bodyBottom(context),
+          Positioned(child: bodyBottom(context)),
         ],
       ),
     );
@@ -117,7 +115,9 @@ class _FoodSeaState extends State<FoodSea> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()), (route) => false);
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                          (route) => false);
                     },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -132,7 +132,8 @@ class _FoodSeaState extends State<FoodSea> {
                         ),
                         Text(
                           "Quay lại",
-                          style: GoogleFonts.roboto(color: Colors.white70, fontSize: 18),
+                          style: GoogleFonts.roboto(
+                              color: Colors.white70, fontSize: 18),
                         ),
                       ],
                     ),
@@ -143,7 +144,8 @@ class _FoodSeaState extends State<FoodSea> {
                       margin: EdgeInsets.only(right: 30),
                       child: Text(
                         "$dateNow",
-                        style: GoogleFonts.roboto(color: Colors.white, fontSize: 18),
+                        style: GoogleFonts.roboto(
+                            color: Colors.white, fontSize: 18),
                       ),
                     ),
                   ),
@@ -172,6 +174,91 @@ class _FoodSeaState extends State<FoodSea> {
         ],
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
+      ),
+      child: SingleChildScrollView(
+        child: Container(
+          width: size.width,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(40.0),
+                topRight: Radius.circular(40.0)),
+          ),
+          child: Column(
+            children: [
+              foodContainer(context,
+                  color: Colors.white,
+                  border: true,
+                  storeName: "Bánh mì xíu mại Hàng Quyên",
+                  location: "37 Cô Bắc, P.4, Tp.Vũng Tàu, Vũng Tàu",
+                  star: "7.5",
+                  avrPrice: "20.000đ - 25.000đ",
+                  linkImg: "images/banh_mi_hoang_dieu.png"),
+              foodContainer(context,
+                  color: Colors.white,
+                  storeName: "Ốc Tự Nhiên",
+                  location: "34 Trần Phú, P.1,  Tp. Vũng Tàu, Vũng Tàu",
+                  star: "7.4",
+                  avrPrice: "10.000đ - 120.000đ",
+                  linkImg: "images/oc_tu_nhien.png"),
+              foodContainer(context,
+                  color: Colors.white,
+                  storeName: "Lẩu cá đuối VT 7 Lượm",
+                  location: "37 Nguyễn Trường Tộ, P.3, Tp.Vũng Tàu, Vũng Tàu",
+                  star: "7.3",
+                  avrPrice: "29.000đ - 169.000đ",
+                  linkImg: "images/lau_ca_duoi_7_luom.png"),
+              foodContainer(context,
+                  color: Colors.white,
+                  storeName: "Gành Hào",
+                  location: "Số 3, đường Trần Phú, P.5, TP. Vũng Tàu",
+                  star: "7.7",
+                  avrPrice: "300.000đ - 1.650.000đ",
+                  linkImg: "images/oc_tu_nhien.png"),
+              foodContainer(context,
+                  color: Colors.white,
+                  storeName: "Lẩu Cá Đuối Trương Công Định",
+                  location: "44 Trương Công Định, Vũng Tàu",
+                  star: "6.3",
+                  avrPrice: "25.000đ - 220.000đ",
+                  linkImg: "images/oc_tu_nhien.png"),
+              foodContainer(context,
+                  color: Colors.white,
+                  storeName: "Quán nướng Cô Nên",
+                  location: "20 Trần Phú, Vũng Tàu",
+                  star: "7.2",
+                  avrPrice: "100.000đ - 220.000đ",
+                  linkImg: "images/oc_tu_nhien.png"),
+              foodContainer(context,
+                  color: Colors.white,
+                  storeName: "Cơm niêu rau Tập Tàng",
+                  location: "Số 5, đường Trần Hưng Đạo, TP. Vũng Tàu",
+                  star: "6.7",
+                  avrPrice: "60.000đ - 330.000đ",
+                  linkImg: "images/oc_tu_nhien.png"),
+              foodContainer(context,
+                  color: Colors.white,
+                  storeName: "Quán Tre nhà hàng hải sản",
+                  location: "411 Thống Nhất Mới, P.8, Tp.Vũng Tàu, Vũng Tàu",
+                  star: "7.0",
+                  avrPrice: "50.000đ - 150.000đ",
+                  linkImg: "images/oc_tu_nhien.png"),
+              foodContainer(context,
+                  color: Colors.white,
+                  storeName: "Bánh Khọt 14 Hoàng Hoa Thám",
+                  location: "14 Hoàng Hoa Thám, P.2, Tp.Vũng Tàu, Vũng Tàu",
+                  star: "7.8",
+                  avrPrice: "40.000đ - 100.000đ",
+                  linkImg: "images/oc_tu_nhien.png"),
+              foodContainer(context,
+                  color: Colors.white,
+                  storeName: "Trứng lòng đào ở núi lớn Viba",
+                  location: "Trên núi Viba, Phường 1, Vũng Tàu",
+                  star: "7.0",
+                  avrPrice: "5.000đ - 20.000đ",
+                  linkImg: "images/oc_tu_nhien.png"),
+            ],
+          ),
+        ),
       ),
     );
   }
