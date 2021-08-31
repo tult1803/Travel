@@ -60,6 +60,14 @@ flutter:
      - images/banh_mi_hoang_dieu.png
      - images/lau_ca_duoi_7_luom.png
      - images/oc_tu_nhien.png
+     - images/banh_khot.png
+     - images/com_nieu.png
+     - images/ganh_hao.png
+     - images/lau_ca_duoi_TCD.png
+     - images/quan_nuong_co_nen.png
+     - images/quan_tre.png
+     - images/trung_long_dao.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
