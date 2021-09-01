@@ -1,7 +1,9 @@
 
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:geocoder/geocoder.dart';
+import 'package:geocoder/services/base.dart';
 import 'package:location/location.dart';
+import 'package:travel_app/view/home_page.dart';
 
 getLocation() async{
     Location location = new Location();
@@ -30,10 +32,11 @@ getLocation() async{
     //Lấy địa chỉ cụ thể
     final coordinates = new Coordinates(
         _locationData.latitude, _locationData.longitude);
-    var addresses;
     try {
-    addresses = await Geocoder.local.findAddressesFromCoordinates(
+    var addresses = await Geocoder.local.findAddressesFromCoordinates(
         coordinates);
+    longtitudeNow = _locationData.longitude;
+    latitudeNow = _locationData.latitude;
     return addresses.first;
   }catch(_){
       return null;

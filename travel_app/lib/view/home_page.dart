@@ -19,6 +19,8 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
+double? latitudeNow, longtitudeNow;
+
 class _HomePageState extends State<HomePage> {
   String? address = "-----", windSpeed = "-----";
   String? temp, adminArea = "-----", sunRise = "-----";

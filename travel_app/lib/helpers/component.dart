@@ -49,64 +49,71 @@ Widget foodContainer(BuildContext context,
     required String storeName,
     required String avrPrice,
     required String star,
+    required String openTime,
     required String location}) {
   var size = MediaQuery.of(context).size;
-  // String url = "https://www.google.com/maps/search/";
-  String url = "https://www.google.com/maps/search/?api=1&query=";
-  return Container(
-    height: 150,
-    width: size.width,
-    decoration: boxDecoration(
-        color: color, border: border, borderLeft: 20, borderRight: 20),
-    child: Row(
-      children: [
-        Container(
-          width: size.width * 0.3,
-          decoration: boxDecoration(
-              color: color, border: border, borderLeft: 20, shadow: false),
-          child: Image.asset("$linkImg", height: 110,),
-        ),
-        Flexible(
-            child: Container(
-          decoration: boxDecoration(
-              color: color, border: border, borderRight: 20, shadow: false),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  margin: EdgeInsets.only(top: 10),
-                  width: size.width,
-                  height: 30,
-                  child: AutoSizeText(
-                    "$storeName",
-                    style: GoogleFonts.roboto(
-                        fontSize: 18, fontWeight: FontWeight.bold),
-                  )),
-              componentRowFood(
-                  icon: Icons.location_on_outlined, content: location),
-              SizedBox(
-                height: 5,
-              ),
-              componentRowFood(icon: Icons.attach_money, content: "$avrPrice"),
-              SizedBox(
-                height: 5,
-              ),
-              componentRowFood(icon: Icons.star_border, content: "$star"),
-              Expanded(
-                  child: GestureDetector(
-                    onTap: () => openGoogleMap(location),
-                    child: Container(
-                margin: EdgeInsets.only(right: 10),
-                alignment: Alignment.centerRight,
-                width: size.width,
-                child: Text("Chỉ đường",
-                      style: GoogleFonts.roboto(color: Colors.blueAccent)),
-              ),
-                  )),
-            ],
+  // String url = "https://www.google.com/maps/search/?api=1&query=";
+  return GestureDetector(
+    onTap: () => openGoogleMap(location),
+    child: Container(
+      height: 160,
+      width: size.width,
+      decoration: boxDecoration(
+          color: color, border: border, borderLeft: 20, borderRight: 20),
+      child: Row(
+        children: [
+          Container(
+            width: size.width * 0.3,
+            decoration: boxDecoration(
+                color: color, border: border, borderLeft: 20, shadow: false),
+            child: Image.asset(
+              "$linkImg",
+              height: 110,
+            ),
           ),
-        )),
-      ],
+          Flexible(
+              child: Container(
+            decoration: boxDecoration(
+                color: color, border: border, borderRight: 20, shadow: false),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                    margin: EdgeInsets.only(top: 10),
+                    width: size.width,
+                    height: 30,
+                    child: AutoSizeText(
+                      "$storeName",
+                      style: GoogleFonts.roboto(
+                          fontSize: 18, fontWeight: FontWeight.bold),
+                    )),
+                componentRowFood(
+                    icon: Icons.location_on_outlined, content: location),
+                SizedBox(
+                  height: 5,
+                ),
+                componentRowFood(icon: Icons.attach_money, content: "$avrPrice"),
+                SizedBox(
+                  height: 5,
+                ),
+                componentRowFood(icon: Icons.access_time, content: "$openTime"),
+                componentRowFood(icon: Icons.star_border, content: "$star"),
+                // Expanded(
+                //     child: GestureDetector(
+                //   onTap: () => openGoogleMap(location),
+                //   child: Container(
+                //     margin: EdgeInsets.only(right: 10),
+                //     alignment: Alignment.centerRight,
+                //     width: size.width,
+                //     child: Text("Chỉ đường",
+                //         style: GoogleFonts.roboto(color: Colors.blueAccent)),
+                //   ),
+                // )),
+              ],
+            ),
+          )),
+        ],
+      ),
     ),
   );
 }
