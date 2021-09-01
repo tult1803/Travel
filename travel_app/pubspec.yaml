@@ -58,16 +58,19 @@ flutter:
   assets:
      - images/vung_tau.png
      - images/can_gio.png
-     - images/banh_mi_hoang_dieu.png
-     - images/lau_ca_duoi_7_luom.png
-     - images/oc_tu_nhien.png
-     - images/banh_khot.png
-     - images/com_nieu.jpg
-     - images/ganh_hao.png
-     - images/lau_ca_duoi_TCD.jpg
-     - images/quan_nuong_co_nen.jpg
-     - images/quan_tre.png
-     - images/trung_long_dao.png
+     - images/vung_tau/banh_mi_hoang_dieu.png
+     - images/vung_tau/lau_ca_duoi_7_luom.png
+     - images/vung_tau/oc_tu_nhien.png
+     - images/vung_tau/banh_khot.png
+     - images/vung_tau/com_nieu.jpg
+     - images/vung_tau/ganh_hao.png
+     - images/vung_tau/lau_ca_duoi_TCD.jpg
+     - images/vung_tau/quan_nuong_co_nen.jpg
+     - images/vung_tau/quan_tre.png
+     - images/vung_tau/trung_long_dao.png
+     - images/vung_tau/tra_sua_tasty.jpg
+     - images/vung_tau/tra_sua_hoa_ly.jpg
+     - images/can_gio/thanh_lich.png
 
   #   - images/a_dot_ham.jpeg
 
