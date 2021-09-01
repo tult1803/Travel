@@ -32,6 +32,7 @@ dependencies:
   url_launcher: ^6.0.9
   geocoding: ^2.0.1
   map_launcher: ^2.1.1
+#  geolocator: ^7.6.0
 #  firebase_database: ^7.2.1
 #  firebase_core: ^1.6.0
   # The following adds the Cupertino Icons font to your application.
@@ -61,10 +62,10 @@ flutter:
      - images/lau_ca_duoi_7_luom.png
      - images/oc_tu_nhien.png
      - images/banh_khot.png
-     - images/com_nieu.png
+     - images/com_nieu.jpg
      - images/ganh_hao.png
-     - images/lau_ca_duoi_TCD.png
-     - images/quan_nuong_co_nen.png
+     - images/lau_ca_duoi_TCD.jpg
+     - images/quan_nuong_co_nen.jpg
      - images/quan_tre.png
      - images/trung_long_dao.png
 
