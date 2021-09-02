@@ -67,7 +67,7 @@ Widget foodContainer(BuildContext context,
             decoration: boxDecoration(
                 color: color, border: border, borderLeft: 20, shadow: false),
             child: Image.asset(
-              "$linkImg",
+              "${(linkImg.isEmpty || linkImg.contains("null") ? noImg : linkImg)}",
               height: 110,
             ),
           ),
