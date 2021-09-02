@@ -26,9 +26,9 @@ class FoodSea extends StatefulWidget {
 
 class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
   TabController? _tabController;
-  String? windSpeed = "-----", dateNow = "-----";
+  // String? windSpeed = "-----", humidity = "-----";
   String? temp, sunRise = "-----";
-  String? weatherMain, humidity = "-----", sunSet = "-----";
+  String? weatherMain, dateNow = "-----", sunSet = "-----";
   ModelWeather _modelWeather = ModelWeather();
   ModelWeather? _data;
   DataWeather weather = DataWeather();
@@ -75,8 +75,8 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
       weatherMain =
           "${_data!.weather!.first.description!.substring(0, 1).toUpperCase()}${_data!.weather!.first.description!.substring(1)}";
       temp = "${_data!.main!.temp}";
-      humidity = "${_data!.main!.humidity}";
-      windSpeed = "${_data!.wind!.speed}";
+      // humidity = "${_data!.main!.humidity}";
+      // windSpeed = "${_data!.wind!.speed}";
       sunRise = converterTime("${_data!.sys!.sunrise}");
       sunSet = converterTime("${_data!.sys!.sunset}");
       dateNow = converterTime("${_data!.dt}", formatDate: "hh:mm - dd/MM");
@@ -156,11 +156,11 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
                   ),
                 ],
               ),
-              Container(
-                margin: EdgeInsets.only(right: 20, top: size.height * 0.03),
-                width: size.width,
-                  height: 40,
-                  child: Center(child: tabBar())),
+              // Container(
+              //   margin: EdgeInsets.only(right: 20),
+              //   width: size.width,
+              //     height: 40,
+              //     child: Center(child: tabBar())),
             ],
           ),
         ),
@@ -172,7 +172,7 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
     var size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Container(
-        margin: EdgeInsets.only(top: size.height * 0.3),
+        margin: EdgeInsets.only(top: size.height * 0.25),
         width: size.width,
         height: size.height,
         decoration: BoxDecoration(
@@ -180,7 +180,16 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
               topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
         ),
         // child: widget.seaName == "Cần Giờ" ? foodCanGio(context) : foodVungTau(context),
-        child: tabBarView(),
+        child: Column(
+          children: [
+            Container(
+                margin: EdgeInsets.only(right: 20),
+                width: size.width,
+                height: 40,
+                child: Center(child: tabBar())),
+            Expanded(child: tabBarView()),
+          ],
+        ),
       ),
     );
   }
