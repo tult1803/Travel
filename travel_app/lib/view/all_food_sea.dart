@@ -182,7 +182,33 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
                   ),
                 ],
               ),
-            ),
+              // Container(
+              //   margin: EdgeInsets.only(right: 20),
+              //   width: size.width,
+              //     height: 40,
+              //     child: Center(child: tabBar())),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget bodyBottom(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      physics: NeverScrollableScrollPhysics(),
+      child: Container(
+        margin: EdgeInsets.only(top: size.height * 0.25),
+        width: size.width,
+        height: size.height * 0.75,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
+        ),
+        // child: widget.seaName == "Cần Giờ" ? foodCanGio(context) : foodVungTau(context),
+        child: Column(
+          children: [
             Container(
                 margin: EdgeInsets.only(right: 20, top: 5),
                 width: size.width,
