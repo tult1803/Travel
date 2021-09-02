@@ -29,8 +29,7 @@ class _foodVungTauState extends State<foodVungTau> {
             star: "6.0",
             avrPrice: "15.000đ - 30.000đ",
             openTime: "Chưa cập nhật",
-            linkImg: noImg,
-            // linkImg: "images/vung_tau/tra_sua_tasty.jpg"
+            linkImg: "images/vung_tau/tra_sua_tasty.jpg"
           ),
           foodContainer(context,
               color: Colors.white,

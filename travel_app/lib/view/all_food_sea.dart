@@ -157,7 +157,7 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
                 ],
               ),
               Container(
-                margin: EdgeInsets.only(right: 20),
+                margin: EdgeInsets.only(right: 20, top: size.height * 0.03),
                 width: size.width,
                   height: 40,
                   child: Center(child: tabBar())),
@@ -187,7 +187,7 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
 
   Widget tabBar() {
     return TabBar(
-      indicatorColor: Colors.blueAccent,
+      indicatorColor: Colors.white,
       isScrollable: true,
       labelColor: Colors.white,
       unselectedLabelColor: Colors.white.withOpacity(0.5),
