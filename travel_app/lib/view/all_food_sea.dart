@@ -26,6 +26,7 @@ class FoodSea extends StatefulWidget {
 
 class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
   TabController? _tabController;
+
   // String? windSpeed = "-----", humidity = "-----";
   String? temp, sunRise = "-----";
   String? weatherMain, dateNow = "-----", sunSet = "-----";
@@ -116,8 +117,6 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
               SizedBox(
                 height: 5,
               ),
-
-
             ],
           ),
         ),
@@ -132,7 +131,7 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
       child: Container(
         margin: EdgeInsets.only(top: size.height * 0.2),
         width: size.width,
-        height: size.height,
+        height: size.height * 0.8,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
@@ -141,74 +140,47 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.only(left: 20,right: 10),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(builder: (context) => HomePage()),
-                              (route) => false);
-                    },
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.arrow_back,
-                          color: Colors.white70,
-                          size: 30,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          "Quay lại",
-                          style: GoogleFonts.roboto(
-                              color: Colors.white70, fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Flexible(
-                    child: Container(
-                      alignment: Alignment.centerRight,
-                      margin: EdgeInsets.only(right: 30),
-                      child: Text(
-                        "$dateNow",
-                        style: GoogleFonts.roboto(
-                            color: Colors.white, fontSize: 18),
+                margin: EdgeInsets.only(left: 20, right: 10),
+                child: Row(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                            (route) => false);
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.arrow_back,
+                            color: Colors.white70,
+                            size: 30,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "Quay lại",
+                            style: GoogleFonts.roboto(
+                                color: Colors.white70, fontSize: 18),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                ],
-              ),
-              // Container(
-              //   margin: EdgeInsets.only(right: 20),
-              //   width: size.width,
-              //     height: 40,
-              //     child: Center(child: tabBar())),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget bodyBottom(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      physics: NeverScrollableScrollPhysics(),
-      child: Container(
-        margin: EdgeInsets.only(top: size.height * 0.25),
-        width: size.width,
-        height: size.height * 0.75,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
-        ),
-        // child: widget.seaName == "Cần Giờ" ? foodCanGio(context) : foodVungTau(context),
-        child: Column(
-          children: [
+                    Flexible(
+                      child: Container(
+                        alignment: Alignment.centerRight,
+                        margin: EdgeInsets.only(right: 30),
+                        child: Text(
+                          "$dateNow",
+                          style: GoogleFonts.roboto(
+                              color: Colors.white, fontSize: 18),
+                        ),
+                      ),
+                    ),
+                  ],
+                )),
             Container(
                 margin: EdgeInsets.only(right: 20, top: 5),
                 width: size.width,
@@ -242,10 +214,10 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
     return TabBarView(
       controller: _tabController,
       children: <Widget>[
-        widget.seaName == "Cần Giờ" ? foodCanGio() :foodVungTau(),
-        widget.seaName == "Cần Giờ" ? foodCanGio() :foodVungTau(),
-        widget.seaName == "Cần Giờ" ? foodCanGio() :foodVungTau(),
-        widget.seaName == "Cần Giờ" ? foodCanGio() :foodVungTau(),
+        widget.seaName == "Cần Giờ" ? foodCanGio() : foodVungTau(),
+        widget.seaName == "Cần Giờ" ? foodCanGio() : foodVungTau(),
+        widget.seaName == "Cần Giờ" ? foodCanGio() : foodVungTau(),
+        widget.seaName == "Cần Giờ" ? foodCanGio() : foodVungTau(),
       ],
     );
   }
