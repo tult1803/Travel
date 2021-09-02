@@ -10,7 +10,7 @@ import 'package:travel_app/ultils/convert_data.dart';
 import 'package:travel_app/view/all_food_sea.dart';
 
 Widget miniContainer(
-    {BuildContext? context, String? image, required String seaName}) {
+    {BuildContext? context, String? image, required int location}) {
   return Container(
     height: 150,
     width: 150,
@@ -34,7 +34,7 @@ Widget miniContainer(
           RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
       onPressed: () {
         Navigator.of(context!).push(MaterialPageRoute(
-          builder: (context) => FoodSea(seaName: seaName),
+          builder: (context) => FoodSea(location: location),
         ));
       },
       child: Text(""),

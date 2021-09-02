@@ -9,7 +9,7 @@ import 'package:travel_app/ultils/convert_data.dart';
 import 'package:travel_app/ultils/data_color.dart';
 import 'package:travel_app/ultils/location.dart';
 
-import '../model/getWeather.dart';
+import '../model/get_weather.dart';
 import '../model/model_data_weather.dart';
 
 class HomePage extends StatefulWidget {
@@ -168,11 +168,11 @@ class _HomePageState extends State<HomePage> {
           miniContainer(
               image: "images/vung_tau.png",
               context: context,
-              seaName: "Vũng Tàu"),
+              location: 1),
           miniContainer(
               image: "images/can_gio.png",
               context: context,
-              seaName: "Cần Giờ"),
+              location: 2),
         ],
       ),
     );

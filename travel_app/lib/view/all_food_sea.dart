@@ -4,21 +4,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:travel_app/data/data_can_gio.dart';
-import 'package:travel_app/data/data_vung_tau.dart';
 import 'package:travel_app/helpers/component.dart';
+import 'package:travel_app/presenter/load_store.dart';
 import 'package:travel_app/ultils/convert_data.dart';
 import 'package:travel_app/ultils/data_color.dart';
 import 'package:travel_app/view/home_page.dart';
 
-import '../model/getWeather.dart';
+import '../model/get_weather.dart';
 import '../model/model_data_weather.dart';
 
 // ignore: must_be_immutable
 class FoodSea extends StatefulWidget {
-  String seaName;
+  int location;
 
-  FoodSea({required this.seaName});
+  FoodSea({required this.location});
 
   @override
   _FoodSeaState createState() => _FoodSeaState();
@@ -28,12 +27,11 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
   TabController? _tabController;
 
   // String? windSpeed = "-----", humidity = "-----";
-  String? temp, sunRise = "-----";
+  String? temp, seaName, sunRise = "-----";
   String? weatherMain, dateNow = "-----", sunSet = "-----";
   ModelWeather _modelWeather = ModelWeather();
   ModelWeather? _data;
   DataWeather weather = DataWeather();
-
   var dataLocation;
 
   @override
@@ -41,7 +39,7 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 4, initialIndex: 0, vsync: this);
-    submitCity(widget.seaName);
+    submitCity();
   }
 
   @override
@@ -64,9 +62,12 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
     );
   }
 
-  Future submitCity(cityName) async {
+  Future submitCity() async {
+    setState(() {
+      widget.location == 1 ? seaName = 'Vũng Tàu' : seaName = "Cần Giờ";
+    });
     try {
-      _modelWeather = await weather.getDataWeather("$cityName");
+      _modelWeather = await weather.getDataWeather("$seaName");
     } catch (_) {
       EasyLoading.showError("Lỗi tải dữ liệu",
           maskType: EasyLoadingMaskType.black, duration: Duration(seconds: 2));
@@ -100,7 +101,7 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
               Container(
                   width: size.width,
                   child: AutoSizeText(
-                    "Vị trí hiện tại: ${widget.seaName}",
+                    "Vị trí hiện tại: $seaName",
                     style: GoogleFonts.roboto(
                         color: Colors.white,
                         fontSize: 20,
@@ -214,10 +215,10 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
     return TabBarView(
       controller: _tabController,
       children: <Widget>[
-        widget.seaName == "Cần Giờ" ? foodCanGio() : foodVungTau(),
-        widget.seaName == "Cần Giờ" ? foodCanGio() : foodVungTau(),
-        widget.seaName == "Cần Giờ" ? foodCanGio() : foodVungTau(),
-        widget.seaName == "Cần Giờ" ? foodCanGio() : foodVungTau(),
+        foodOfLocation(typeOfStore: null, location: widget.location),
+        foodOfLocation(typeOfStore: 1, location: widget.location),
+        foodOfLocation(typeOfStore: 2, location: widget.location),
+        foodOfLocation(typeOfStore: 3, location: widget.location),
       ],
     );
   }

@@ -6,7 +6,6 @@ import 'package:map_launcher/map_launcher.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 String noImg = "images/no_image.png";
-
 converterTime(data, {String? formatDate}) {
   int? dataInt = int.tryParse("$data");
   String format =
