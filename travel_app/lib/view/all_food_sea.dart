@@ -88,7 +88,7 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
     var size = MediaQuery.of(context).size;
     return Container(
       width: size.width,
-      height: size.height * 0.4,
+      // height: size.height * 0.2,
       color: colorHexa("7265fa"),
       child: SafeArea(
         child: Padding(
@@ -116,13 +116,39 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
               SizedBox(
                 height: 5,
               ),
-              Row(
+
+
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget bodyBottom(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      physics: NeverScrollableScrollPhysics(),
+      child: Container(
+        margin: EdgeInsets.only(top: size.height * 0.2),
+        width: size.width,
+        height: size.height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
+        ),
+        // child: widget.seaName == "Cần Giờ" ? foodCanGio(context) : foodVungTau(context),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 20,right: 10),
+              child: Row(
                 children: [
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(builder: (context) => HomePage()),
-                          (route) => false);
+                              (route) => false);
                     },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -156,34 +182,9 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
                   ),
                 ],
               ),
-              // Container(
-              //   margin: EdgeInsets.only(right: 20),
-              //   width: size.width,
-              //     height: 40,
-              //     child: Center(child: tabBar())),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget bodyBottom(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Container(
-        margin: EdgeInsets.only(top: size.height * 0.25),
-        width: size.width,
-        height: size.height,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
-        ),
-        // child: widget.seaName == "Cần Giờ" ? foodCanGio(context) : foodVungTau(context),
-        child: Column(
-          children: [
+            ),
             Container(
-                margin: EdgeInsets.only(right: 20),
+                margin: EdgeInsets.only(right: 20, top: 5),
                 width: size.width,
                 height: 40,
                 child: Center(child: tabBar())),
@@ -215,10 +216,10 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
     return TabBarView(
       controller: _tabController,
       children: <Widget>[
-        foodVungTau(),
-        foodVungTau(),
-        foodVungTau(),
-        foodVungTau(),
+        widget.seaName == "Cần Giờ" ? foodCanGio() :foodVungTau(),
+        widget.seaName == "Cần Giờ" ? foodCanGio() :foodVungTau(),
+        widget.seaName == "Cần Giờ" ? foodCanGio() :foodVungTau(),
+        widget.seaName == "Cần Giờ" ? foodCanGio() :foodVungTau(),
       ],
     );
   }

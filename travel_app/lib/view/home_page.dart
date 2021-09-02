@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future _getDataLocation() async {
-    dataLocation = await getLocation();
+    // dataLocation = await getLocation();
     setState(() {
       if (dataLocation != null) {
         address = "${dataLocation.addressLine}";

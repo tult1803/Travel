@@ -5,8 +5,6 @@ import 'package:travel_app/ultils/convert_data.dart';
 
 // ignore: camel_case_types
 class foodVungTau extends StatefulWidget {
-
-
   @override
   _foodVungTauState createState() => _foodVungTauState();
 }
@@ -17,20 +15,19 @@ class _foodVungTauState extends State<foodVungTau> {
     return bodyFoodVungTau(context);
   }
 
-  Widget bodyFoodVungTau(BuildContext context){
+  Widget bodyFoodVungTau(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
           foodContainer(context,
-            color: Colors.white,
-            border: true,
-            storeName: "Trà sữa Tasty",
-            location: "152/7 Ba Cu, Phường 1, Thành phố Vũng Tầu",
-            star: "6.0",
-            avrPrice: "15.000đ - 30.000đ",
-            openTime: "Chưa cập nhật",
-            linkImg: "images/vung_tau/tra_sua_tasty.jpg"
-          ),
+              color: Colors.white,
+              border: true,
+              storeName: "Trà sữa Tasty",
+              location: "152/7 Ba Cu, Phường 1, Thành phố Vũng Tầu",
+              star: "6.0",
+              avrPrice: "15.000đ - 30.000đ",
+              openTime: "Chưa cập nhật",
+              linkImg: "images/vung_tau/tra_sua_tasty.jpg"),
           foodContainer(context,
               color: Colors.white,
               storeName: "Trà sữa Hoa Ly",
