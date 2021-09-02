@@ -1,4 +1,3 @@
-
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,7 +24,8 @@ class FoodSea extends StatefulWidget {
   _FoodSeaState createState() => _FoodSeaState();
 }
 
-class _FoodSeaState extends State<FoodSea> {
+class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
+  TabController? _tabController;
   String? windSpeed = "-----", dateNow = "-----";
   String? temp, sunRise = "-----";
   String? weatherMain, humidity = "-----", sunSet = "-----";
@@ -39,7 +39,15 @@ class _FoodSeaState extends State<FoodSea> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _tabController = TabController(length: 4, initialIndex: 0, vsync: this);
     submitCity(widget.seaName);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _tabController!.dispose();
   }
 
   @override
@@ -102,13 +110,6 @@ class _FoodSeaState extends State<FoodSea> {
               ),
               showTemp("$temp", "$weatherMain", color: Colors.white),
               Text(
-                "Độ ẩm: $humidity     Sức gió: $windSpeed m/s",
-                style: GoogleFonts.roboto(color: Colors.white70, fontSize: 18),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
                 "Bình minh: $sunRise     Hoàng hôn: $sunSet",
                 style: GoogleFonts.roboto(color: Colors.white70, fontSize: 18),
               ),
@@ -155,6 +156,11 @@ class _FoodSeaState extends State<FoodSea> {
                   ),
                 ],
               ),
+              Container(
+                margin: EdgeInsets.only(right: 20),
+                width: size.width,
+                  height: 40,
+                  child: Center(child: tabBar())),
             ],
           ),
         ),
@@ -164,34 +170,47 @@ class _FoodSeaState extends State<FoodSea> {
 
   Widget bodyBottom(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Container(
-      margin: EdgeInsets.only(top: size.height * 0.3),
-      width: size.width,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black54,
-            offset: Offset(1, 0),
-            blurRadius: 5,
-          ),
-        ],
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
-      ),
-      child: SingleChildScrollView(
-        child: Container(
-          width: size.width,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40.0),
-                topRight: Radius.circular(40.0)),
-          ),
-          child: widget.seaName == "Cần Giờ" ? foodCanGio(context) : foodVungTau(context),
+    return SingleChildScrollView(
+      child: Container(
+        margin: EdgeInsets.only(top: size.height * 0.3),
+        width: size.width,
+        height: size.height,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
         ),
+        // child: widget.seaName == "Cần Giờ" ? foodCanGio(context) : foodVungTau(context),
+        child: tabBarView(),
       ),
     );
   }
 
+  Widget tabBar() {
+    return TabBar(
+      indicatorColor: Colors.blueAccent,
+      isScrollable: true,
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.white.withOpacity(0.5),
+      controller: _tabController,
+      labelStyle: GoogleFonts.roboto(fontSize: 15),
+      tabs: <Widget>[
+        Tab(text: "Tất cả"),
+        Tab(text: "Nước uống"),
+        Tab(text: "Ăn vặt"),
+        Tab(text: "Ăn no"),
+      ],
+    );
+  }
 
+  Widget tabBarView() {
+    return TabBarView(
+      controller: _tabController,
+      children: <Widget>[
+        foodVungTau(),
+        foodVungTau(),
+        foodVungTau(),
+        foodVungTau(),
+      ],
+    );
+  }
 }

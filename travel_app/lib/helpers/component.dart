@@ -79,7 +79,7 @@ Widget foodContainer(BuildContext context,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                    margin: EdgeInsets.only(top: 10),
+                    margin: EdgeInsets.only(top: 10, left: 5),
                     width: size.width,
                     height: 30,
                     child: AutoSizeText(
