@@ -37,6 +37,7 @@ getLocation() async{
         coordinates);
     longtitudeNow = _locationData.longitude;
     latitudeNow = _locationData.latitude;
+
     return addresses.first;
   }catch(_){
       return null;

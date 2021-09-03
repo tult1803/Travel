@@ -23,7 +23,7 @@ double? latitudeNow, longtitudeNow;
 
 class _HomePageState extends State<HomePage> {
   String? address = "-----", windSpeed = "-----";
-  String? temp, adminArea = "-----", sunRise = "-----";
+  String? temp, subAdminArea = "-----", sunRise = "-----";
   String? weatherMain, humidity = "-----", sunSet = "-----";
   ModelWeather _modelWeather = ModelWeather();
   ModelWeather? _data;
@@ -66,13 +66,13 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       if (dataLocation != null) {
         address = "${dataLocation.addressLine}";
-        adminArea = "${dataLocation.adminArea}";
+        subAdminArea = "${dataLocation.subAdminArea}";
       } else {
-        adminArea = "Thành phố Hồ Chí Minh";
+        subAdminArea = "Thành phố Hồ Chí Minh";
         address = "Không thể lấy vị trí cụ thể";
       }
     });
-    submitCity(adminArea);
+    submitCity(subAdminArea);
   }
 
   Future submitCity(cityName) async {
@@ -113,7 +113,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                   width: size.width,
                   child: AutoSizeText(
-                    "Vị trí hiện tại: $adminArea",
+                    "Vị trí hiện tại: $subAdminArea",
                     style: GoogleFonts.roboto(
                         color: Colors.white,
                         fontSize: 20,
