@@ -38,7 +38,7 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: 4, initialIndex: 0, vsync: this);
+    _tabController = TabController(length: 5, initialIndex: 0, vsync: this);
     submitCity();
   }
 
@@ -183,7 +183,7 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
                   ],
                 )),
             Container(
-                margin: EdgeInsets.only(right: 20, top: 5),
+                margin: EdgeInsets.only(top: 5),
                 width: size.width,
                 height: 40,
                 child: Center(child: tabBar())),
@@ -202,11 +202,13 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
       unselectedLabelColor: Colors.white.withOpacity(0.5),
       controller: _tabController,
       labelStyle: GoogleFonts.roboto(fontSize: 15),
+
       tabs: <Widget>[
-        Tab(text: "Tất cả"),
         Tab(text: "Nước uống"),
         Tab(text: "Ăn vặt"),
         Tab(text: "Ăn no"),
+        Tab(text: "Vui chơi"),
+        Tab(text: "Tất cả"),
       ],
     );
   }
@@ -215,10 +217,11 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
     return TabBarView(
       controller: _tabController,
       children: <Widget>[
-        foodOfLocation(typeOfStore: null, location: widget.location),
         foodOfLocation(typeOfStore: 1, location: widget.location),
         foodOfLocation(typeOfStore: 2, location: widget.location),
         foodOfLocation(typeOfStore: 3, location: widget.location),
+        foodOfLocation(typeOfStore: 4, location: widget.location),
+        foodOfLocation(typeOfStore: null, location: widget.location),
       ],
     );
   }
