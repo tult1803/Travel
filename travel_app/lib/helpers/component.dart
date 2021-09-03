@@ -31,7 +31,7 @@ Widget miniContainer(
     // ignore: deprecated_member_use
     child: FlatButton(
       shape:
-      RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
+          RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
       onPressed: () {
         Navigator.of(context!).push(MaterialPageRoute(
           builder: (context) => FoodSea(location: location),
@@ -44,16 +44,14 @@ Widget miniContainer(
 
 Widget foodContainer(BuildContext context,
     {required Color color,
-      bool? border,
-      required String linkImg,
-      required String storeName,
-      required String avrPrice,
-      required String star,
-      required String openTime,
-      required String location}) {
-  var size = MediaQuery
-      .of(context)
-      .size;
+    bool? border,
+    required String linkImg,
+    required String storeName,
+    required String avrPrice,
+    required String star,
+    required String openTime,
+    required String location}) {
+  var size = MediaQuery.of(context).size;
   // String url = "https://www.google.com/maps/search/?api=1&query=";
   return GestureDetector(
     onTap: () => openGoogleMap(location),
@@ -61,79 +59,73 @@ Widget foodContainer(BuildContext context,
       height: 160,
       width: size.width,
       decoration: boxDecoration(
-          color: color, border: border, borderLeft: 20, borderRight: 20),
+          color: color, border: border, borderLeft: 10, borderRight: 10),
       child: Row(
         children: [
-      Container(
-        margin: EdgeInsets.only(top: border == null ? 5 : 0, bottom: 5),
-      width: size.width * 0.3,
-        decoration: boxDecoration(
-            color: color, border: border, borderLeft: 20, shadow: false),
-        child: ClipRRect(
-            borderRadius: border == null
-                ? BorderRadius.circular(10.0)
-                : BorderRadius.only(
-                topLeft: Radius.circular(20),
-                bottomLeft: Radius.circular(10),
-            topRight: Radius.circular(10),
-            bottomRight: Radius.circular(10)),
-        child: Image.asset(
-          "$linkImg",
-          fit: BoxFit.fill,
-
-          errorBuilder: (context, error, stackTrace) {
-            return Image.asset(
-              noImg,
-            );
-          },
-          height: 160,
-        ),
+          Container(
+            margin: EdgeInsets.only(left: 5),
+            width: size.width * 0.3,
+            decoration: boxDecoration(
+                color: color, border: border, borderLeft: 20, shadow: false),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image.asset(
+                "$linkImg",
+                fit: BoxFit.fill,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    noImg,
+                  );
+                },
+                height: 150,
+              ),
+            ),
+          ),
+          Flexible(
+              child: Container(
+            decoration: boxDecoration(
+                color: color, border: border, borderRight: 20, shadow: false),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                    margin: EdgeInsets.only(top: 10, left: 5),
+                    width: size.width,
+                    height: 30,
+                    child: AutoSizeText(
+                      "$storeName",
+                      style: GoogleFonts.roboto(
+                          fontSize: 18, fontWeight: FontWeight.bold),
+                    )),
+                componentRowFood(
+                    icon: Icons.location_on_outlined, content: location),
+                SizedBox(
+                  height: 5,
+                ),
+                componentRowFood(
+                    icon: Icons.attach_money, content: "$avrPrice"),
+                SizedBox(
+                  height: 5,
+                ),
+                componentRowFood(icon: Icons.access_time, content: "$openTime"),
+                componentRowFood(icon: Icons.star_border, content: "$star"),
+                // Expanded(
+                //     child: GestureDetector(
+                //   onTap: () => openGoogleMap(location),
+                //   child: Container(
+                //     margin: EdgeInsets.only(right: 10),
+                //     alignment: Alignment.centerRight,
+                //     width: size.width,
+                //     child: Text("Chỉ đường",
+                //         style: GoogleFonts.roboto(color: Colors.blueAccent)),
+                //   ),
+                // )),
+              ],
+            ),
+          )),
+        ],
       ),
     ),
-    Flexible(
-        child: Container(
-          decoration: boxDecoration(
-              color: color, border: border, borderRight: 20, shadow: false),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  margin: EdgeInsets.only(top: 10, left: 5),
-                  width: size.width,
-                  height: 30,
-                  child: AutoSizeText(
-                    "$storeName",
-                    style: GoogleFonts.roboto(
-                        fontSize: 18, fontWeight: FontWeight.bold),
-                  )),
-              componentRowFood(
-                  icon: Icons.location_on_outlined, content: location),
-              SizedBox(
-                height: 5,
-              ),
-              componentRowFood(icon: Icons.attach_money, content: "$avrPrice"),
-              SizedBox(
-                height: 5,
-              ),
-              componentRowFood(icon: Icons.access_time, content: "$openTime"),
-              componentRowFood(icon: Icons.star_border, content: "$star"),
-              // Expanded(
-              //     child: GestureDetector(
-              //   onTap: () => openGoogleMap(location),
-              //   child: Container(
-              //     margin: EdgeInsets.only(right: 10),
-              //     alignment: Alignment.centerRight,
-              //     width: size.width,
-              //     child: Text("Chỉ đường",
-              //         style: GoogleFonts.roboto(color: Colors.blueAccent)),
-              //   ),
-              // )),
-            ],
-          ),
-        )),
-    ],
-  ),)
-  ,
   );
 }
 

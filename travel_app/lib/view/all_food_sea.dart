@@ -133,10 +133,7 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
         margin: EdgeInsets.only(top: size.height * 0.2),
         width: size.width,
         height: size.height * 0.8,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
-        ),
+
         // child: widget.seaName == "Cần Giờ" ? foodCanGio(context) : foodVungTau(context),
         child: Column(
           children: [
