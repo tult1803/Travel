@@ -50,13 +50,17 @@ openGoogleMap(String? location) async {
   try {
     locations = await locationFromAddress("$location");
   }catch(_){
-    latitude = double.tryParse(location!.substring(0, location.indexOf(",")).trim());
-    longitude = double.tryParse(location.substring(location.indexOf(",")).trim());
+    try{
+    latitude = double.parse(location!.substring(0, location.indexOf(",")).trim());
+    longitude = double.parse(location.substring(location.indexOf(",")).trim());
+  }catch(_){
+    EasyLoading.showError("Có lỗi xảy ra", duration: Duration(seconds: 2));
+  }
   }
   /// Check có google map ko
   bool? isGoogleMap = await MapLauncher.isMapAvailable(MapType.google);
 
-  try {
+
     /// Có thì mở google map
     if (isGoogleMap!) {
       print('Google Map');
@@ -77,7 +81,4 @@ openGoogleMap(String? location) async {
         title: "$location",
       );
     }
-  }catch(_){
-    EasyLoading.showError("Có lỗi xảy ra", duration: Duration(seconds: 2));
-  }
 }

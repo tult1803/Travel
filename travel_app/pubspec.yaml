@@ -75,6 +75,11 @@ flutter:
      - images/vung_tau/tra_sua_hoa_ly.jpg
      - images/vung_tau/rau_ma_ba_gia.png
      - images/vung_tau/tuong_chua_kito.png
+     - images/vung_tau/mui_nghinh_phong.png
+     - images/vung_tau/ho_da_xanh.png
+     - images/vung_tau/canh_dong_cuu.png
+     - images/vung_tau/ho_may.png
+     - images/vung_tau/dua_cho.png
      - images/can_gio/thanh_lich.png
 
   #   - images/a_dot_ham.jpeg
