@@ -199,7 +199,6 @@ class _FoodSeaState extends State<FoodSea> with TickerProviderStateMixin {
       unselectedLabelColor: Colors.white.withOpacity(0.5),
       controller: _tabController,
       labelStyle: GoogleFonts.roboto(fontSize: 15),
-
       tabs: <Widget>[
         Tab(text: "Nước uống"),
         Tab(text: "Ăn vặt"),

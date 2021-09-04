@@ -45,26 +45,39 @@ void launchURL(String? url) async => await canLaunch("$url")
         duration: Duration(seconds: 2));
 
 openGoogleMap(String? location) async {
-  List<Location> locations = await locationFromAddress("$location");
-
+  double? latitude,longitude;
+  List<Location>? locations;
+  try {
+    locations = await locationFromAddress("$location");
+  }catch(_){
+    latitude = double.tryParse(location!.substring(0, location.indexOf(",")).trim());
+    longitude = double.tryParse(location.substring(location.indexOf(",")).trim());
+  }
   /// Check có google map ko
   bool? isGoogleMap = await MapLauncher.isMapAvailable(MapType.google);
 
-  /// Có thì mở google map
-  if (isGoogleMap!) {
-    print('Google Map');
-    await MapLauncher.showMarker(
-      mapType: MapType.google,
-      coords: Coords(locations.first.latitude, locations.first.longitude),
-      title: "$location",
-    );
-  } else {
-    /// Không có Google Map thì mở trình duyệt map có sẵn
-    final availableMaps = await MapLauncher.installedMaps;
-    print("Map đang mở: ${availableMaps.first.mapName}"); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
-    await availableMaps.first.showMarker(
-      coords: Coords(locations.first.latitude, locations.first.longitude),
-      title: "$location",
-    );
+  try {
+    /// Có thì mở google map
+    if (isGoogleMap!) {
+      print('Google Map');
+      await MapLauncher.showMarker(
+        mapType: MapType.google,
+        coords: locations == null ? Coords(latitude!, longitude!) : Coords(
+            locations.first.latitude, locations.first.longitude),
+        title: "$location",
+      );
+    } else {
+      /// Không có Google Map thì mở trình duyệt map có sẵn
+      final availableMaps = await MapLauncher.installedMaps;
+      print("${availableMaps.first
+          .mapName}"); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
+      await availableMaps.first.showMarker(
+        coords: locations == null ? Coords(latitude!, longitude!) : Coords(
+            locations.first.latitude, locations.first.longitude),
+        title: "$location",
+      );
+    }
+  }catch(_){
+    EasyLoading.showError("Có lỗi xảy ra", duration: Duration(seconds: 2));
   }
 }
